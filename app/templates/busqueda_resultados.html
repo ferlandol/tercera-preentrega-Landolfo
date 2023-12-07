@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados de Búsqueda</title>
+</head>
+<body>
+    <h1>Resultados de Búsqueda</h1>
+
+    <form method="get" action="{% url 'buscar' %}">
+        {{ form.as_p }}
+        <input type="submit" value="Buscar">
+    </form>
+
+    <h2>Categorías:</h2>
+    <ul>
+        {% for categoria in resultados_categoria %}
+            <li>{{ categoria.nombre }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Productos:</h2>
+    <ul>
+        {% for producto in resultados_producto %}
+            <li>{{ producto.nombre }} - {{ producto.categoria.nombre }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Clientes:</h2>
+    <ul>
+        {% for cliente in resultados_cliente %}
+            <li>{{ cliente.nombre }} - {{ cliente.correo }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
